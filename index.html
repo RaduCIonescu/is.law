@@ -14,25 +14,62 @@
             color: #333;
         }
         header {
-            padding: 20px 40px;
-            background-color: #ffffff;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+  padding: 20px 40px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
         .logo img {
-            height: 100px; /* Adjust the logo size as needed */
+            height: 100px; 
         }
-        nav a {
-            text-decoration: none;
-            color: #555;
-            font-weight: 600;
-            margin-left: 20px;
-        }
-        nav a:hover {
-            color: #74b95c;
-        }
+       nav {
+  display: flex;
+}
+
+nav a {
+  text-decoration: none;
+  color: #555;
+  font-weight: 600;
+  margin-left: 20px;
+}
+
+nav a:hover {
+  color: #74b95c;
+}
+
+.hamburger-menu {
+  display: none; /* hidden by default */
+  font-size: 28px;
+  cursor: pointer;
+  color: #555;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hamburger-menu {
+    display: block; /* show hamburger icon */
+  }
+  
+  nav {
+    display: none; /* hide nav links */
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background-color: #ffffff;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 10px 0;
+  }
+
+  nav a {
+    margin: 10px 20px;
+    text-align: right;
+  }
+}
         .hero {
             padding: 80px 40px;
             text-align: center;
@@ -242,6 +279,25 @@
 <footer class="footer">
     © 2025 Ionescu, Stoica și Asociații. All rights reserved.
 </footer>
+<script>
+  function toggleMenu() {
+    const navLinks = document.getElementById("nav-links");
+    if (navLinks.style.display === "flex") {
+      navLinks.style.display = "none";
+    } else {
+      navLinks.style.display = "flex";
+    }
+  }
+
+  // Close the menu when clicking outside (optional enhancement)
+  window.onclick = function(event) {
+    const navLinks = document.getElementById("nav-links");
+    const hamburgerMenu = document.querySelector('.hamburger-menu');
+    if (event.target !== navLinks && event.target !== hamburgerMenu) {
+      navLinks.style.display = "none";
+    }
+  };
+</script>
 
 </body>
 </html>
